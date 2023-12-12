@@ -1,0 +1,43 @@
+#column-c {
+    width: 100%;
+    max-width: 500px;
+}
+#column-c .column {
+    --aspect-ratio: 5 / 3;
+    --color: rgba(90, 165, 255, 1);
+}
+#column-c .column tbody {
+    overflow-y: hidden; /* remove this to see how it works */
+}
+#column-c .column tbody th {
+    background-color: #fff;
+    z-index: 1;
+    margin-top: 10 px;
+}
+
+#column-c .column tbody tr {
+    animation: moving-bars 2s linear normal;
+    border: 2px black solid;
+    background-color: #ffffff;
+    border-radius: 50px;
+    margin: 2px;
+    padding: 0px;
+}
+
+#column-c .column tbody td {
+    animation: moving-bars 2s linear normal;
+    border-radius: 50px;
+    font-size: 1.2rem;
+}
+@keyframes moving-bars {
+    0% {
+        transform: translateY(100%);
+        flex-grow: 0;
+        border-radius: 0px;
+    }
+    30% {
+        transform: translateY(70%);
+        flex-grow: 1;
+        border-radius: 0px;
+    }
+}

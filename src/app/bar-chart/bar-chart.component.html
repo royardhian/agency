@@ -1,0 +1,45 @@
+<div id="column-c">
+    <table *ngIf="size.length > 0" class="charts-css column show-labels data-spacing-2 data-start">
+        <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of size">
+                <td style="--size: {{item}};">{{item * 10}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<button id="basic" mat-raised-button color="primary" (click)="randomize()">
+    Basic button
+</button><button id="basic" mat-raised-button color="primary" (click)="randomize2()">
+    Basic button
+</button>
+
+<mat-grid-list cols="2" rowHeight="2:1">
+    <mat-grid-tile><mat-card>
+            <mat-card-header>
+                <mat-card-title>Actions Buttons</mat-card-title>
+                <mat-card-subtitle>End</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-actions align="end">
+                <button mat-button>LIKE</button>
+                <button mat-button>SHARE</button>
+            </mat-card-actions>
+        </mat-card></mat-grid-tile>
+    <mat-grid-tile><mat-card>
+            <mat-card-header>
+                <mat-card-title>Actions Buttons</mat-card-title>
+                <mat-card-subtitle>End</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-actions align="end">
+                <button mat-button>LIKE</button>
+                <button mat-button>SHARE</button>
+            </mat-card-actions>
+        </mat-card></mat-grid-tile>
+    <mat-grid-tile>3</mat-grid-tile>
+    <mat-grid-tile>4</mat-grid-tile>
+</mat-grid-list>
