@@ -1,10 +1,38 @@
+* {
+    box-sizing: border-box;
+}
+.flex-container {
+    height: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 30px;
+    text-align: center;
+}
+.flex-item-one {
+    flex: 50%;
+}
+
+.flex-item-two {
+    flex: 50%;
+}
+/* Responsive layout - makes a one column-layout instead of a two-column layout */
+@media only screen and (max-width: 1000px) {
+    .flex-item-one,
+    .flex-item-two {
+        flex: 100%;
+    }
+}
+
 #column-c {
+    height: 100%;
     width: 100%;
     max-width: 500px;
+    max-height: 500px;
 }
 #column-c .column {
     --aspect-ratio: 5 / 3;
     --color: rgba(90, 165, 255, 1);
+    align-self: flex-end;
 }
 #column-c .column tbody {
     overflow-y: hidden; /* remove this to see how it works */
@@ -16,7 +44,7 @@
 }
 
 #column-c .column tbody tr {
-    animation: moving-bars 2s linear normal;
+    animation: moving-bars 1s linear normal;
     border: 2px black solid;
     background-color: #ffffff;
     border-radius: 50px;
@@ -25,7 +53,7 @@
 }
 
 #column-c .column tbody td {
-    animation: moving-bars 2s linear normal;
+    animation: moving-bars 1s linear normal;
     border-radius: 50px;
     font-size: 1.2rem;
 }
@@ -39,5 +67,42 @@
         transform: translateY(70%);
         flex-grow: 1;
         border-radius: 0px;
+    }
+}
+#divider {
+    height: 2em;
+    background-color: aqua;
+}
+
+@media screen and (max-width: 600px) {
+    #icon {
+        visibility: hidden;
+        clear: both;
+        float: left;
+        margin: 10px auto 5px 20px;
+        width: 28%;
+        display: none;
+    }
+}
+
+mat-icon {
+    width: 50%;
+    height: 50%;
+
+    flex-shrink: 0;
+    justify-content: center;
+
+    & ::ng-deep svg {
+        align-self: center;
+    }
+
+    &.shrink-90 ::ng-deep svg {
+        width: 90%;
+        height: 90%;
+    }
+
+    &.shrink-80 ::ng-deep svg {
+        width: 80%;
+        height: 80%;
     }
 }

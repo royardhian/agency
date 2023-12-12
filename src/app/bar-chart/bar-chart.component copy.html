@@ -17,12 +17,16 @@
         </div>
     </div>
     <div class="flex-item-two">
-        <mat-icon [svgIcon]="icon" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
-        <div>{{total}}</div>
+        <mat-icon svgIcon="thumbs-up" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
+        <img ngSrc="assets/cold-face-svgrepo-com.svg" width="400" height="200" priority>
     </div>
+
 </div>
 
 <div id="divider"></div>
 <mat-paginator (page)="handlePageEvent($event)" [length]="length" [pageSize]="pageSize" [showFirstLastButtons]="true"
     [hidePageSize]="true" [pageSizeOptions]="[]" aria-label="Select page">
 </mat-paginator>
+<!-- <button id="basic" mat-raised-button color="primary" (click)="randomize()">
+    Basic button
+</button> -->

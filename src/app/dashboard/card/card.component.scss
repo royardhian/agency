@@ -1,0 +1,61 @@
+* {
+    box-sizing: border-box;
+}
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 30px;
+    text-align: center;
+}
+.flex-container > .flex-item-left,
+.flex-item-midle,
+.flex-item-right {
+    background-color: #f1f1f1;
+    animation: test 1s;
+}
+.flex-container > .flex-item-midle {
+    background-color: #f1f1f1;
+    animation: test 2s;
+}
+.flex-container > .flex-item-right {
+    background-color: #f1f1f1;
+    animation: test 3s;
+}
+
+.flex-item-left {
+    padding: 10px;
+    flex: 33%;
+}
+
+.flex-item-midle {
+    padding: 10px;
+    flex: 33%;
+}
+
+.flex-item-right {
+    padding: 10px;
+    flex: 33%;
+}
+
+.flex-item-one {
+    padding: 10px;
+    flex: 50%;
+}
+
+.flex-item-two {
+    padding: 10px;
+    flex: 50%;
+}
+/* Responsive layout - makes a one column-layout instead of a two-column layout */
+@media (max-width: 800px) {
+    .flex-item-left,
+    .flex-item-midle,
+    .flex-item-right {
+        flex: 100%;
+    }
+}
+// @keyframes test {
+//     0% {
+//         transform: translateX(50%);
+//     }
+// }
