@@ -7,6 +7,7 @@
     flex-wrap: wrap;
     font-size: 30px;
     text-align: center;
+    align-content: flex-end;
 }
 .flex-item-one {
     flex: 50%;
@@ -20,30 +21,37 @@
     .flex-item-one,
     .flex-item-two {
         flex: 100%;
+        text-align: -webkit-center;
     }
 }
 
-#column-c {
+#column-a {
     height: 100%;
     width: 100%;
     max-width: 500px;
-    max-height: 500px;
+    max-height: 300px;
 }
-#column-c .column {
+#column-b {
+    height: 100%;
+    width: 100%;
+    max-width: 400px;
+    max-height: 200px;
+}
+#column-a .column {
     --aspect-ratio: 5 / 3;
     --color: rgba(90, 165, 255, 1);
     align-self: flex-end;
 }
-#column-c .column tbody {
+#column-a .column tbody {
     overflow-y: hidden; /* remove this to see how it works */
 }
-#column-c .column tbody th {
+#column-a .column tbody th {
     background-color: #fff;
     z-index: 1;
     margin-top: 10 px;
 }
 
-#column-c .column tbody tr {
+#column-a .column tbody tr {
     animation: moving-bars 1s linear normal;
     border: 2px black solid;
     background-color: #ffffff;
@@ -52,7 +60,7 @@
     padding: 0px;
 }
 
-#column-c .column tbody td {
+#column-a .column tbody td {
     animation: moving-bars 1s linear normal;
     border-radius: 50px;
     font-size: 1.2rem;
@@ -74,7 +82,7 @@
     background-color: aqua;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1000px) {
     #icon {
         visibility: hidden;
         clear: both;

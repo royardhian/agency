@@ -1,11 +1,16 @@
-import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  ViewChild,
+} from '@angular/core';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { register } from 'swiper/element/bundle';
 import { MatCardModule } from '@angular/material/card';
 import { Card } from '../../models/card.model';
 import { CommonModule } from '@angular/common';
-import SwiperComponent from 'swiper';
+import SwiperComponent, { Swiper } from 'swiper';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 
 @Component({
@@ -19,20 +24,31 @@ import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 export class DashboardComponent {
   contents: Card[] = [];
   index = 0;
-  @ViewChild('newSwiper', { static: false }) swiperRef!: any;
+  @ViewChild('newSwiper', { static: false }) swiperRef: any;
+  swiper?: Swiper;
 
   pageSize = 1;
-  totalSize = 10;
 
   jancok: any = {
-    0: {
-      slidesPerView: 2,
-    },
-    640: {
-      slidesPerView: 4,
-    },
-    1024: {
-      slidesPerView: 6,
+    injectStyles: [
+      `
+      .swiper-button-next, .swiper-button-prev {
+        position: absolute;
+        top: var(--swiper-navigation-top-offset,170px);
+      }
+    `,
+    ],
+    slidesPerView: 1,
+    breakpoints: {
+      0: {
+        slidesPerView: 2,
+      },
+      640: {
+        slidesPerView: 4,
+      },
+      1024: {
+        slidesPerView: 6,
+      },
     },
   };
   prev: boolean = false;
@@ -45,7 +61,7 @@ export class DashboardComponent {
   }
 
   setCard(): void {
-    for (let index = 0; index < this.totalSize; index++) {
+    for (let index = 0; index < 10; index++) {
       const card: Card = {
         title: 'APE',
         description: '1000',
@@ -54,9 +70,14 @@ export class DashboardComponent {
 
       this.contents.push(card);
     }
-    console.log(this.swiperRef?.nativeElement.swiper.snapGrid.length);
+    console.log(this.swiperRef?.nativeElement.swiper?.snapGrid?.length);
 
-    this.totalSize = this.swiperRef?.nativeElement.swiper.snapGrid.length;
+    this.swiper = this.swiperRef?.nativeElement.swiper;
+    console.log(this.swiper?.activeIndex);
+
+    Object.assign(this.swiperRef?.nativeElement, this.jancok);
+
+    this.swiperRef?.nativeElement.initialize();
     this.cdRef.detectChanges();
   }
 
@@ -66,32 +87,9 @@ export class DashboardComponent {
     this.setCard();
   }
 
-  slideNext(index: number) {
-    this.swiperRef?.nativeElement.swiper.slideTo(index);
-  }
-
-  slidePrev(index: number) {
-    this.swiperRef?.nativeElement.swiper.slideTo(index);
-  }
-
   handlePageEvent(e: PageEvent) {
     console.log(this.swiperRef?.nativeElement.swiper.snapGrid.length);
 
     this.swiperRef?.nativeElement.swiper.slideTo(e.pageIndex);
-  }
-
-  slide(flag: boolean) {
-    this.activeIndex = this.swiperRef?.nativeElement.swiper.activeIndex;
-
-    if (!flag) {
-      if (this.activeIndex < this.totalSize) {
-        this.swiperRef?.nativeElement.swiper.slideTo(this.activeIndex + 1);
-      }
-    } else {
-      if (this.activeIndex > 0) {
-        this.swiperRef?.nativeElement.swiper.slideTo(this.activeIndex - 1);
-      }
-    }
-    this.activeIndex = this.swiperRef?.nativeElement.swiper.activeIndex;
   }
 }

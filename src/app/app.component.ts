@@ -5,6 +5,7 @@ import { BarChartComponent } from './bar-chart/bar-chart.component';
 import { CardComponent } from './dashboard/card/card.component';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { register } from 'swiper/element/bundle';
+import { ChartjsComponent } from './dashboard/chartjs/chartjs.component';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +18,7 @@ import { register } from 'swiper/element/bundle';
     BarChartComponent,
     CardComponent,
     DashboardComponent,
+    ChartjsComponent,
   ],
 })
 export class AppComponent {

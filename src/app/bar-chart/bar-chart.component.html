@@ -1,6 +1,6 @@
 <div class="flex-container">
     <div class="flex-item-one">
-        <div id="column-c">
+        <div id="column-a">
             <table *ngIf="size.length > 0" class="charts-css column show-labels data-spacing-2 data-start">
                 <thead>
                     <tr>
@@ -16,8 +16,8 @@
             </table>
         </div>
     </div>
-    <div class="flex-item-two">
-        <mat-icon [svgIcon]="icon" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
+    <div id="icon" class="flex-item-two">
+        <mat-icon id="column-b" [svgIcon]="icon" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
         <div>{{total}}</div>
     </div>
 </div>

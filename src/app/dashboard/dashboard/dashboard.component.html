@@ -1,16 +1,11 @@
-<div>
-    <button [disabled]="activeIndex === 0" (click)="slide(true)">Prev</button>
-    <button [disabled]="activeIndex === totalSize - 1 " (click)="slide(false)">Next</button>
-</div>
-<swiper-container #newSwiper class="mySwiper" space-between="10" free-mode="true" [breakpoints]="jancok">
+<swiper-container #newSwiper class="mySwiper" space-between="10" free-mode="true" navigation="true" pagination="true"
+    pagination-type="fraction" init="false">
     <swiper-slide *ngFor="let item of contents">
         <mat-card [style.background]="true ? 'lightBlue':'yellow'">
             <mat-card-header>
                 <mat-card-subtitle>Click For Details</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
-                <p>
-                </p>
                 <p>
                     {{item.title}}
                 </p>
